@@ -1,0 +1,31 @@
+<Window x:Class="AUDIOBL.Views.OverlayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AUDIOBL Overlay"
+        SizeToContent="WidthAndHeight"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize">
+    <Border Background="#CC1A1A2E"
+            CornerRadius="12"
+            Padding="14,8">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBlock x:Name="BatteryIcon"
+                       Text="&#x1F50B;"
+                       FontSize="18"
+                       VerticalAlignment="Center"
+                       Margin="0,0,8,0"
+                       Foreground="White"/>
+            <TextBlock x:Name="BatteryText"
+                       Text="---"
+                       FontSize="16"
+                       FontWeight="SemiBold"
+                       Foreground="White"
+                       VerticalAlignment="Center"
+                       FontFamily="Segoe UI"/>
+        </StackPanel>
+    </Border>
+</Window>

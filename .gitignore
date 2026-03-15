@@ -1,0 +1,22 @@
+# Build outputs
+_publish/
+_package/
+**/bin/
+**/obj/
+
+# MSIX artifacts
+*.msix
+*.msix.p7
+
+# Certificate (self-signed dev cert — never commit)
+*.pfx
+
+# User-specific VS/Rider files
+.vs/
+*.user
+*.suo
+.idea/
+
+# OS
+Thumbs.db
+desktop.ini
