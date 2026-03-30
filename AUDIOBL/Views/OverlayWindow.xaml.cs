@@ -19,6 +19,7 @@ public partial class OverlayWindow : Window
 
         MouseLeftButtonDown += (_, e) => { if (e.ButtonState == MouseButtonState.Pressed) DragMove(); };
         LocationChanged += (_, _) => SavePosition();
+        Deactivated += (_, _) => { Topmost = false; Topmost = true; };
     }
 
     public void UpdateBattery(int? level)

@@ -74,7 +74,7 @@ public class BluetoothService : IDisposable
             DeviceConnectionChanged?.Invoke(c);
             if (c)
                 _ = ReadGattBatteryFromDeviceId(_deviceId!).ContinueWith(t =>
-                    BatteryLevelChanged?.Invoke(t.Result),
+                    { if (t.Result.HasValue) BatteryLevelChanged?.Invoke(t.Result); },
                     TaskContinuationOptions.OnlyOnRanToCompletion);
             else
                 BatteryLevelChanged?.Invoke(null);
@@ -109,7 +109,7 @@ public class BluetoothService : IDisposable
                 if (connected)
                 {
                     var battery = await ReadGattBatteryFromDeviceId(d.Id);
-                    BatteryLevelChanged?.Invoke(battery);
+                    if (battery.HasValue) BatteryLevelChanged?.Invoke(battery);
                 }
                 else BatteryLevelChanged?.Invoke(null);
                 return;
@@ -236,7 +236,7 @@ public class BluetoothService : IDisposable
         var info = Win32FindDevice(_filter);
         if (info == null) { DeviceConnectionChanged?.Invoke(false); return; }
         DeviceConnectionChanged?.Invoke(info.Value.fConnected);
-        BatteryLevelChanged?.Invoke(null);
+        if (!info.Value.fConnected) BatteryLevelChanged?.Invoke(null);
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
