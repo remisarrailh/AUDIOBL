@@ -59,5 +59,9 @@
         <!-- Auto-start -->
         <CheckBox x:Name="AutoStartCheck"
                   Checked="AutoStartCheck_Changed" Unchecked="AutoStartCheck_Changed"/>
+
+        <!-- Version -->
+        <TextBlock x:Name="VersionText" Margin="0,20,0,0"
+                   Foreground="#FF666688" FontSize="11" HorizontalAlignment="Right"/>
     </StackPanel>
 </Window>

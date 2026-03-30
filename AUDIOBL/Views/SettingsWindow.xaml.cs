@@ -16,7 +16,18 @@ public partial class SettingsWindow : Window
         InitializeComponent();
         ApplyStrings();
         LoadValues();
+        VersionText.Text = GetAppVersion();
         _loading = false;
+    }
+
+    private static string GetAppVersion()
+    {
+        try
+        {
+            var v = Windows.ApplicationModel.Package.Current.Id.Version;
+            return $"v{v.Major}.{v.Minor}.{v.Build}";
+        }
+        catch { return ""; }
     }
 
     private void ApplyStrings()
