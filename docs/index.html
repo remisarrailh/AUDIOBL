@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
@@ -34,7 +34,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* â”€â”€ NAV â”€â”€ */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -71,7 +71,7 @@
       background: var(--accent); color: #fff;
     }
 
-    /* ── HERO ── */
+    /* â”€â”€ HERO â”€â”€ */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -128,7 +128,7 @@
     }
     .btn-ghost:hover { border-color: rgba(100,100,220,.4); }
 
-    /* ── OVERLAY PREVIEW ── */
+    /* â”€â”€ OVERLAY PREVIEW â”€â”€ */
     .preview-wrap {
       margin-top: 60px; position: relative;
       display: flex; justify-content: center;
@@ -169,7 +169,7 @@
       font-size: .7rem; font-weight: 700; color: #fff;
     }
 
-    /* ── SECTIONS ── */
+    /* â”€â”€ SECTIONS â”€â”€ */
     section { padding: 100px 24px; }
 
     .section-inner { max-width: 1000px; margin: 0 auto; }
@@ -188,7 +188,7 @@
       margin-bottom: 56px;
     }
 
-    /* ── FEATURES GRID ── */
+    /* â”€â”€ FEATURES GRID â”€â”€ */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -209,7 +209,7 @@
     .feat-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
     .feat-card p  { font-size: .88rem; color: var(--muted); line-height: 1.65; }
 
-    /* ── HOW IT WORKS ── */
+    /* â”€â”€ HOW IT WORKS â”€â”€ */
     .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
     .steps::before {
       content: '';
@@ -234,7 +234,7 @@
       padding: 2px 6px; border-radius: 4px; font-size: .82rem;
     }
 
-    /* ── BATTERY INDICATOR DEMO ── */
+    /* â”€â”€ BATTERY INDICATOR DEMO â”€â”€ */
     .battery-demo {
       display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px;
     }
@@ -246,7 +246,7 @@
     }
     .dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    /* ── INSTALL ── */
+    /* â”€â”€ INSTALL â”€â”€ */
     .install-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 48px;
@@ -266,10 +266,10 @@
       display: flex; align-items: center; gap: 10px;
     }
     .req-list li::before {
-      content: '✓'; color: var(--green); font-weight: 700; font-size: .8rem;
+      content: 'âœ“'; color: var(--green); font-weight: 700; font-size: .8rem;
     }
 
-    /* ── FOOTER ── */
+    /* â”€â”€ FOOTER â”€â”€ */
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 48px;
@@ -279,7 +279,7 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
 
-    /* ── ANIMATIONS ── */
+    /* â”€â”€ ANIMATIONS â”€â”€ */
     .fade-up {
       opacity: 0; transform: translateY(24px);
       transition: opacity .6s ease, transform .6s ease;
@@ -293,7 +293,7 @@
 <nav>
   <div class="nav-logo">AUDIOBL</div>
   <div class="nav-links">
-    <a href="#features"   data-fr="Fonctionnalités"   data-en="Features">Fonctionnalités</a>
+    <a href="#features"   data-fr="FonctionnalitÃ©s"   data-en="Features">FonctionnalitÃ©s</a>
     <a href="#how"        data-fr="Fonctionnement"     data-en="How it works">Fonctionnement</a>
     <a href="#install"    data-fr="Installer"          data-en="Install">Installer</a>
     <a href="https://github.com/remisarrailh/AUDIOBL" target="_blank">GitHub</a>
@@ -306,13 +306,13 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge"><span class="badge-dot"></span> <span data-fr="Windows 11 · Casques Bluetooth" data-en="Windows 11 · Bluetooth Headphones">Windows 11 · Casques Bluetooth</span><span class="badge-sep">·</span><span>v1.1.1</span></div>
+  <div class="badge"><span class="badge-dot"></span> <span data-fr="Windows 11 Â· Casques Bluetooth" data-en="Windows 11 Â· Bluetooth Headphones">Windows 11 Â· Casques Bluetooth</span><span class="badge-sep">Â·</span><span>v1.2.0</span></div>
   <h1>AUDIOBL</h1>
-  <p class="hero-sub" data-fr="Le niveau de batterie de votre casque Bluetooth, toujours visible dans la barre des tâches." data-en="Your Bluetooth headphone battery level, always visible in the system tray.">Le niveau de batterie de votre casque Bluetooth, toujours visible dans la barre des tâches.</p>
+  <p class="hero-sub" data-fr="Le niveau de batterie de votre casque Bluetooth, toujours visible dans la barre des tÃ¢ches." data-en="Your Bluetooth headphone battery level, always visible in the system tray.">Le niveau de batterie de votre casque Bluetooth, toujours visible dans la barre des tÃ¢ches.</p>
   <div class="cta-group">
     <a href="https://github.com/remisarrailh/AUDIOBL/releases/latest" class="btn btn-primary">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Zm-1-7.25v-4.5C1.75 1.784 2.784.75 4.25.75h7.5C13.216.75 14.25 1.784 14.25 2.25v4.5a.75.75 0 0 1-1.5 0v-4.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0-.75.75v4.5a.75.75 0 0 1-1.5 0Z"/><path d="M7.25 8.75v-5.5a.75.75 0 0 1 1.5 0v5.5l1.97-1.97a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 8.84a.75.75 0 0 1 1.06-1.06Z"/></svg>
-      <span data-fr="Télécharger" data-en="Download">Télécharger</span>
+      <span data-fr="TÃ©lÃ©charger" data-en="Download">TÃ©lÃ©charger</span>
     </a>
     <a href="https://github.com/remisarrailh/AUDIOBL" class="btn btn-ghost">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
@@ -324,7 +324,7 @@
   <div class="preview-wrap fade-up">
     <div class="screen-mock">
       <div class="overlay-pill">
-        <span class="battery-icon">🔋</span>
+        <span class="battery-icon">ðŸ”‹</span>
         <span class="battery-pct" id="demo-pct">87%</span>
       </div>
       <div class="tray-mock">
@@ -337,30 +337,30 @@
 <!-- FEATURES -->
 <section id="features" style="background: var(--surface);">
   <div class="section-inner">
-    <p class="section-label fade-up" data-fr="Fonctionnalités" data-en="Features">Fonctionnalités</p>
+    <p class="section-label fade-up" data-fr="FonctionnalitÃ©s" data-en="Features">FonctionnalitÃ©s</p>
     <h2 class="fade-up" data-fr="Tout ce dont vous avez besoin" data-en="Everything you need">Tout ce dont vous avez besoin</h2>
-    <p class="section-sub fade-up" data-fr="Léger, discret, toujours à jour." data-en="Lightweight, unobtrusive, always up to date.">Léger, discret, toujours à jour.</p>
+    <p class="section-sub fade-up" data-fr="LÃ©ger, discret, toujours Ã  jour." data-en="Lightweight, unobtrusive, always up to date.">LÃ©ger, discret, toujours Ã  jour.</p>
 
     <div class="features-grid">
       <div class="feat-card fade-up">
-        <div class="feat-icon">🔋</div>
-        <h3 data-fr="Icône live dans le tray" data-en="Live tray icon">Icône live dans le tray</h3>
-        <p data-fr="Le pourcentage s'affiche directement dans l'icône de la barre des tâches — mise à jour toutes les 30 secondes." data-en="The battery percentage is rendered directly in the tray icon — updated every 30 seconds.">Le pourcentage s'affiche directement dans l'icône de la barre des tâches — mise à jour toutes les 30 secondes.</p>
+        <div class="feat-icon">ðŸ”‹</div>
+        <h3 data-fr="IcÃ´ne live dans le tray" data-en="Live tray icon">IcÃ´ne live dans le tray</h3>
+        <p data-fr="Le pourcentage s'affiche directement dans l'icÃ´ne de la barre des tÃ¢ches â€” mise Ã  jour toutes les 30 secondes." data-en="The battery percentage is rendered directly in the tray icon â€” updated every 30 seconds.">Le pourcentage s'affiche directement dans l'icÃ´ne de la barre des tÃ¢ches â€” mise Ã  jour toutes les 30 secondes.</p>
       </div>
       <div class="feat-card fade-up">
-        <div class="feat-icon">💬</div>
+        <div class="feat-icon">ðŸ’¬</div>
         <h3 data-fr="Overlay flottant" data-en="Floating overlay">Overlay flottant</h3>
-        <p data-fr="Une pastille transparente toujours visible, déplaçable, avec indicateur coloré (vert / jaune / rouge)." data-en="A transparent pill, always on top, draggable, with a color indicator (green / yellow / red).">Une pastille transparente toujours visible, déplaçable, avec indicateur coloré (vert / jaune / rouge).</p>
+        <p data-fr="Une pastille transparente toujours visible, dÃ©plaÃ§able, avec indicateur colorÃ© (vert / jaune / rouge)." data-en="A transparent pill, always on top, draggable, with a color indicator (green / yellow / red).">Une pastille transparente toujours visible, dÃ©plaÃ§able, avec indicateur colorÃ© (vert / jaune / rouge).</p>
       </div>
       <div class="feat-card fade-up">
-        <div class="feat-icon">⚡</div>
-        <h3 data-fr="Démarrage automatique" data-en="Auto-start">Démarrage automatique</h3>
-        <p data-fr="Optionnel : se lance avec Windows, vit entièrement dans le tray, aucune fenêtre dans la barre des tâches." data-en="Optional: starts with Windows, lives entirely in the tray, no taskbar window.">Optionnel : se lance avec Windows, vit entièrement dans le tray, aucune fenêtre dans la barre des tâches.</p>
+        <div class="feat-icon">âš¡</div>
+        <h3 data-fr="DÃ©marrage automatique" data-en="Auto-start">DÃ©marrage automatique</h3>
+        <p data-fr="Optionnel : se lance avec Windows, vit entiÃ¨rement dans le tray, aucune fenÃªtre dans la barre des tÃ¢ches." data-en="Optional: starts with Windows, lives entirely in the tray, no taskbar window.">Optionnel : se lance avec Windows, vit entiÃ¨rement dans le tray, aucune fenÃªtre dans la barre des tÃ¢ches.</p>
       </div>
       <div class="feat-card fade-up">
-        <div class="feat-icon">🎧</div>
+        <div class="feat-icon">ðŸŽ§</div>
         <h3 data-fr="Compatible tous casques" data-en="Any headphone">Compatible tous casques</h3>
-        <p data-fr="Fonctionne avec tout casque Bluetooth exposant le GATT Battery Service (norme Bluetooth SIG). Audio-Technica, Sony, Bose, Jabra, Sennheiser…" data-en="Works with any Bluetooth headphone exposing the GATT Battery Service (Bluetooth SIG standard). Audio-Technica, Sony, Bose, Jabra, Sennheiser…">Fonctionne avec tout casque Bluetooth exposant le GATT Battery Service. Audio-Technica, Sony, Bose, Jabra, Sennheiser…</p>
+        <p data-fr="Fonctionne avec tout casque Bluetooth exposant le GATT Battery Service (norme Bluetooth SIG). Audio-Technica, Sony, Bose, Jabra, Sennheiserâ€¦" data-en="Works with any Bluetooth headphone exposing the GATT Battery Service (Bluetooth SIG standard). Audio-Technica, Sony, Bose, Jabra, Sennheiserâ€¦">Fonctionne avec tout casque Bluetooth exposant le GATT Battery Service. Audio-Technica, Sony, Bose, Jabra, Sennheiserâ€¦</p>
       </div>
     </div>
 
@@ -371,15 +371,15 @@
       <div class="batt-pill"><span>Bose</span></div>
       <div class="batt-pill"><span>Jabra</span></div>
       <div class="batt-pill"><span>Sennheiser</span></div>
-      <div class="batt-pill"><span style="color:var(--muted)" data-fr="et plus…" data-en="and more…">et plus…</span></div>
+      <div class="batt-pill"><span style="color:var(--muted)" data-fr="et plusâ€¦" data-en="and moreâ€¦">et plusâ€¦</span></div>
     </div>
 
     <!-- Battery color demo -->
     <div class="battery-demo" style="margin-top:40px">
-      <div class="batt-pill"><span class="dot" style="background:var(--green)"></span> <span data-fr="≥ 50 % — vert" data-en="≥ 50% — green">≥ 50 % — vert</span></div>
-      <div class="batt-pill"><span class="dot" style="background:var(--yellow)"></span> <span data-fr="≥ 20 % — jaune" data-en="≥ 20% — yellow">≥ 20 % — jaune</span></div>
-      <div class="batt-pill"><span class="dot" style="background:var(--red)"></span> <span data-fr="&lt; 20 % — rouge" data-en="&lt; 20% — red">&lt; 20 % — rouge</span></div>
-      <div class="batt-pill"><span class="dot" style="background:var(--muted)"></span> <span data-fr="Déconnecté — ---" data-en="Disconnected — ---">Déconnecté — ---</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--green)"></span> <span data-fr="â‰¥ 50 % â€” vert" data-en="â‰¥ 50% â€” green">â‰¥ 50 % â€” vert</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--yellow)"></span> <span data-fr="â‰¥ 20 % â€” jaune" data-en="â‰¥ 20% â€” yellow">â‰¥ 20 % â€” jaune</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--red)"></span> <span data-fr="&lt; 20 % â€” rouge" data-en="&lt; 20% â€” red">&lt; 20 % â€” rouge</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--muted)"></span> <span data-fr="DÃ©connectÃ© â€” ---" data-en="Disconnected â€” ---">DÃ©connectÃ© â€” ---</span></div>
     </div>
   </div>
 </section>
@@ -395,22 +395,22 @@
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3 data-fr="Détection de connexion" data-en="Connection detection">Détection de connexion</h3>
-          <p data-fr="L'app surveille les événements Bluetooth via l'API Device Information de Windows (DeviceInformation.CreateWatcher). La connexion et déconnexion sont détectées en temps réel." data-en="The app watches Bluetooth events via Windows Device Information API (DeviceInformation.CreateWatcher). Connection and disconnection are detected in real time.">L'app surveille les événements Bluetooth via l'API Device Information de Windows. La connexion et déconnexion sont détectées en temps réel.</p>
+          <h3 data-fr="DÃ©tection de connexion" data-en="Connection detection">DÃ©tection de connexion</h3>
+          <p data-fr="L'app surveille les Ã©vÃ©nements Bluetooth via l'API Device Information de Windows (DeviceInformation.CreateWatcher). La connexion et dÃ©connexion sont dÃ©tectÃ©es en temps rÃ©el." data-en="The app watches Bluetooth events via Windows Device Information API (DeviceInformation.CreateWatcher). Connection and disconnection are detected in real time.">L'app surveille les Ã©vÃ©nements Bluetooth via l'API Device Information de Windows. La connexion et dÃ©connexion sont dÃ©tectÃ©es en temps rÃ©el.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
           <h3 data-fr="Scan BLE &amp; lecture GATT" data-en="BLE scan &amp; GATT read">Scan BLE &amp; lecture GATT</h3>
-          <p data-fr="La batterie est lue via le GATT Battery Service standard (UUID 0x180F / 0x2A19). Un scan BLE passif détecte automatiquement l'adresse du casque — aucun GUID à configurer manuellement." data-en="Battery is read via the standard GATT Battery Service (UUID 0x180F / 0x2A19). A passive BLE scan automatically discovers the headphone address — no GUID to configure manually.">La batterie est lue via le GATT Battery Service standard (<code>0x180F</code> / <code>0x2A19</code>). Un scan BLE passif détecte automatiquement l'adresse du casque.</p>
+          <p data-fr="La batterie est lue via le GATT Battery Service standard (UUID 0x180F / 0x2A19). Un scan BLE passif dÃ©tecte automatiquement l'adresse du casque â€” aucun GUID Ã  configurer manuellement." data-en="Battery is read via the standard GATT Battery Service (UUID 0x180F / 0x2A19). A passive BLE scan automatically discovers the headphone address â€” no GUID to configure manually.">La batterie est lue via le GATT Battery Service standard (<code>0x180F</code> / <code>0x2A19</code>). Un scan BLE passif dÃ©tecte automatiquement l'adresse du casque.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3 data-fr="Rendu de l'icône" data-en="Icon rendering">Rendu de l'icône</h3>
-          <p data-fr="L'icône tray est générée à chaque mise à jour via GDI — le texte &quot;87%&quot; est dessiné sur un bitmap 32×32 transparent et converti en HICON natif." data-en="The tray icon is generated on each update via GDI — the text &quot;87%&quot; is drawn on a transparent 32×32 bitmap and converted to a native HICON.">L'icône tray est générée via GDI — le texte est dessiné sur un bitmap 32×32 transparent et converti en HICON natif.</p>
+          <h3 data-fr="Rendu de l'icÃ´ne" data-en="Icon rendering">Rendu de l'icÃ´ne</h3>
+          <p data-fr="L'icÃ´ne tray est gÃ©nÃ©rÃ©e Ã  chaque mise Ã  jour via GDI â€” le texte &quot;87%&quot; est dessinÃ© sur un bitmap 32Ã—32 transparent et converti en HICON natif." data-en="The tray icon is generated on each update via GDI â€” the text &quot;87%&quot; is drawn on a transparent 32Ã—32 bitmap and converted to a native HICON.">L'icÃ´ne tray est gÃ©nÃ©rÃ©e via GDI â€” le texte est dessinÃ© sur un bitmap 32Ã—32 transparent et converti en HICON natif.</p>
         </div>
       </div>
     </div>
@@ -421,22 +421,22 @@
 <section id="install" style="background: var(--surface);">
   <div class="section-inner">
     <p class="section-label fade-up" data-fr="Installation" data-en="Installation">Installation</p>
-    <h2 class="fade-up" data-fr="Prêt en 30 secondes" data-en="Ready in 30 seconds">Prêt en 30 secondes</h2>
+    <h2 class="fade-up" data-fr="PrÃªt en 30 secondes" data-en="Ready in 30 seconds">PrÃªt en 30 secondes</h2>
 
     <div class="install-card fade-up">
       <div>
-        <h3 data-fr="Télécharger &amp; installer" data-en="Download &amp; install">Télécharger &amp; installer</h3>
-        <p data-fr="Téléchargez le fichier MSIX depuis la page Releases, double-cliquez pour installer, puis lancez AUDIOBL depuis le menu Démarrer." data-en="Download the MSIX file from the Releases page, double-click to install, then launch AUDIOBL from the Start menu.">Téléchargez le fichier MSIX depuis la page Releases, double-cliquez pour installer, puis lancez AUDIOBL depuis le menu Démarrer.</p>
+        <h3 data-fr="TÃ©lÃ©charger &amp; installer" data-en="Download &amp; install">TÃ©lÃ©charger &amp; installer</h3>
+        <p data-fr="TÃ©lÃ©chargez le fichier MSIX depuis la page Releases, double-cliquez pour installer, puis lancez AUDIOBL depuis le menu DÃ©marrer." data-en="Download the MSIX file from the Releases page, double-click to install, then launch AUDIOBL from the Start menu.">TÃ©lÃ©chargez le fichier MSIX depuis la page Releases, double-cliquez pour installer, puis lancez AUDIOBL depuis le menu DÃ©marrer.</p>
         <a href="https://github.com/remisarrailh/AUDIOBL/releases/latest" class="btn btn-primary" style="display:inline-flex">
-          <span data-fr="Télécharger AUDIOBL" data-en="Download AUDIOBL">Télécharger AUDIOBL</span>
+          <span data-fr="TÃ©lÃ©charger AUDIOBL" data-en="Download AUDIOBL">TÃ©lÃ©charger AUDIOBL</span>
         </a>
       </div>
       <div>
-        <h3 data-fr="Prérequis" data-en="Requirements">Prérequis</h3>
+        <h3 data-fr="PrÃ©requis" data-en="Requirements">PrÃ©requis</h3>
         <ul class="req-list">
           <li>Windows 11 (22H2+)</li>
-          <li data-fr="Casque Bluetooth appairé (GATT Battery Service)" data-en="Bluetooth headphone paired (GATT Battery Service)">Casque Bluetooth appairé (GATT Battery Service)</li>
-          <li data-fr="Bluetooth activé" data-en="Bluetooth enabled">Bluetooth activé</li>
+          <li data-fr="Casque Bluetooth appairÃ© (GATT Battery Service)" data-en="Bluetooth headphone paired (GATT Battery Service)">Casque Bluetooth appairÃ© (GATT Battery Service)</li>
+          <li data-fr="Bluetooth activÃ©" data-en="Bluetooth enabled">Bluetooth activÃ©</li>
         </ul>
       </div>
     </div>
@@ -445,7 +445,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span data-fr="Fait avec ♥ pour l'ATH-M50xBT" data-en="Made with ♥ for the ATH-M50xBT">Fait avec ♥ pour l'ATH-M50xBT</span>
+  <span data-fr="Fait avec â™¥ pour l'ATH-M50xBT" data-en="Made with â™¥ for the ATH-M50xBT">Fait avec â™¥ pour l'ATH-M50xBT</span>
   <div style="display:flex;gap:24px">
     <a href="https://github.com/remisarrailh/AUDIOBL">GitHub</a>
     <a href="https://github.com/remisarrailh/AUDIOBL/blob/main/LICENSE">MIT</a>
@@ -453,7 +453,7 @@
 </footer>
 
 <script>
-  // ── Language toggle ──────────────────────────────────────────────────────
+  // â”€â”€ Language toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let currentLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
 
   function setLang(lang) {
@@ -469,7 +469,7 @@
   // Apply on load
   setLang(currentLang);
 
-  // ── Battery demo animation ───────────────────────────────────────────────
+  // â”€â”€ Battery demo animation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const levels = [
     { pct: '87%', color: '#4ade80' },
     { pct: '43%', color: '#facc15' },
@@ -485,7 +485,7 @@
     if (tray) { tray.textContent = levels[idx].pct; }
   }, 2000);
 
-  // ── Scroll fade-in ───────────────────────────────────────────────────────
+  // â”€â”€ Scroll fade-in â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });

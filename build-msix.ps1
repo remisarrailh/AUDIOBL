@@ -6,6 +6,24 @@ param(
 $ErrorActionPreference = 'Stop'
 $Root        = $PSScriptRoot
 $AppProject  = "$Root\AUDIOBL\AUDIOBL.csproj"
+
+# ── Version depuis le manifest ─────────────────────────────────────────────
+$ManifestPath = "$Root\AUDIOBL.Package\Package.appxmanifest"
+$ManifestXml  = [xml](Get-Content $ManifestPath)
+$PkgVersion   = $ManifestXml.Package.Identity.Version   # e.g. "1.2.0.0"
+$SemVer       = ($PkgVersion -split '\.')[ 0..2 ] -join '.'  # "1.2.0"
+Write-Host ">> Version détectée : v$SemVer" -ForegroundColor Cyan
+
+# ── Patch landing page ─────────────────────────────────────────────────────
+$IndexPath = "$Root\docs\index.html"
+$html = Get-Content $IndexPath -Raw
+$patched = $html -replace 'v\d+\.\d+\.\d+(?=<\/span><\/div>)', "v$SemVer"
+if ($patched -ne $html) {
+    Set-Content $IndexPath $patched -Encoding UTF8 -NoNewline
+    Write-Host "   Landing page mise à jour → v$SemVer" -ForegroundColor Green
+} else {
+    Write-Host "   Landing page déjà à jour" -ForegroundColor Yellow
+}
 $PkgDir      = "$Root\AUDIOBL.Package"
 $PublishDir  = "$Root\_publish"
 $PackageDir  = "$Root\_package"
