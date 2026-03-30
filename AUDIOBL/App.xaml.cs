@@ -54,6 +54,7 @@ public partial class App : Application
             _bluetoothService.BatteryLevelChanged     += OnBatteryLevelChanged;
             _bluetoothService.DeviceConnectionChanged += OnDeviceConnectionChanged;
             _ = _bluetoothService.StartAsync();
+            _ = CheckForUpdateAsync();
         }
         catch (Exception ex)
         {
@@ -162,6 +163,38 @@ public partial class App : Application
     {
         if (_overlay == null) return;
         if (_overlay.IsVisible) _overlay.Hide(); else _overlay.Show();
+    }
+
+    private static string GetCurrentVersion()
+    {
+        try
+        {
+            var v = global::Windows.ApplicationModel.Package.Current.Id.Version;
+            return $"{v.Major}.{v.Minor}.{v.Build}";
+        }
+        catch { return "0.0.0"; }
+    }
+
+    private async Task CheckForUpdateAsync()
+    {
+        try
+        {
+            var update = await UpdateService.CheckAsync(GetCurrentVersion());
+            if (update == null) return;
+
+            Dispatcher.Invoke(() =>
+            {
+                var result = MessageBox.Show(
+                    $"A new version is available: {update.Version}\n\nInstall now?",
+                    "AUDIOBL — Update available",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Information);
+
+                if (result == MessageBoxResult.Yes)
+                    _ = UpdateService.DownloadAndInstallAsync(update.DownloadUrl);
+            });
+        }
+        catch { }
     }
 
     internal static void WriteLog(string message) { /* logging disabled */ }
