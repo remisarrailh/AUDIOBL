@@ -19,7 +19,8 @@ public static class Loc
     private static string Fr(string fr, string en) => Current == AppLanguage.French ? fr : en;
 
     // Tray menu
-    public static string MenuShowHide  => Fr("Afficher / Masquer", "Show / Hide");
+    public static string MenuShowHide  => Fr("Afficher / Masquer",  "Show / Hide");
+    public static string MenuRecenter  => Fr("Recentrer l'overlay", "Recenter overlay");
     public static string MenuSettings  => Fr("Paramètres",          "Settings");
     public static string MenuQuit      => Fr("Quitter",              "Quit");
 
@@ -35,6 +36,13 @@ public static class Loc
     public static string LangAuto           => Fr("Automatique",                   "Automatic");
     public static string LangFrench         => "Français";
     public static string LangEnglish        => "English";
+
+    // Low battery warning
+    public static string LowBatteryTitle => Fr("Batterie faible", "Low battery");
+    public static string LowBatteryClose => Fr("Fermer",          "Dismiss");
+    public static string LowBatteryMessage(int level) => Fr(
+        $"Le niveau de batterie de votre casque est à {level} %.\nPensez à le recharger pour ne pas tomber en panne.",
+        $"Your headset battery is down to {level}%.\nConsider charging it before it runs out.");
 
     // Errors
     public static string StartupError => Fr("Erreur au démarrage", "Startup error");

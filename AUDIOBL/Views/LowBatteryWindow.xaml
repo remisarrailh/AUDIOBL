@@ -1,0 +1,78 @@
+<Window x:Class="AUDIOBL.Views.LowBatteryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AUDIOBL"
+        SizeToContent="WidthAndHeight"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style x:Key="CloseBtn" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                CornerRadius="9"
+                                Padding="22,9"
+                                Background="#FF6060F0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#FF7878FF"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#F2141430"
+            CornerRadius="16"
+            Padding="30,26"
+            BorderBrush="#FFF87171"
+            BorderThickness="1.5"
+            Width="392">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="38" ShadowDepth="0" Color="#000000" Opacity="0.65"/>
+        </Border.Effect>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,14">
+                <TextBlock Text="&#x1FAAB;"
+                           FontSize="30"
+                           Foreground="#FFF87171"
+                           VerticalAlignment="Center"
+                           Margin="0,0,14,0"/>
+                <TextBlock x:Name="TitleText"
+                           Text="Batterie faible"
+                           FontSize="19"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           VerticalAlignment="Center"
+                           FontFamily="Segoe UI"/>
+            </StackPanel>
+            <TextBlock x:Name="MessageText"
+                       FontSize="13.5"
+                       Foreground="#FFB8B8D0"
+                       TextWrapping="Wrap"
+                       LineHeight="20"
+                       FontFamily="Segoe UI"
+                       Margin="0,0,0,22"/>
+            <Button x:Name="CloseButton"
+                    Style="{StaticResource CloseBtn}"
+                    Content="Fermer"
+                    HorizontalAlignment="Right"
+                    Click="Close_Click"/>
+        </StackPanel>
+    </Border>
+</Window>

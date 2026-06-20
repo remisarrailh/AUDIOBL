@@ -15,11 +15,15 @@ $SemVer       = ($PkgVersion -split '\.')[ 0..2 ] -join '.'  # "1.2.0"
 Write-Host ">> Version détectée : v$SemVer" -ForegroundColor Cyan
 
 # ── Patch landing page ─────────────────────────────────────────────────────
+# Read/write as UTF-8 *without BOM* explicitly. Get-Content/Set-Content in
+# Windows PowerShell 5.1 would otherwise read a no-BOM file as ANSI (1252) and
+# re-encode it as UTF-8, double-encoding every accent/emoji on each build.
 $IndexPath = "$Root\docs\index.html"
-$html = Get-Content $IndexPath -Raw
+$Utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+$html = [System.IO.File]::ReadAllText($IndexPath, $Utf8NoBom)
 $patched = $html -replace 'v\d+\.\d+\.\d+(?=<\/span><\/div>)', "v$SemVer"
 if ($patched -ne $html) {
-    Set-Content $IndexPath $patched -Encoding UTF8 -NoNewline
+    [System.IO.File]::WriteAllText($IndexPath, $patched, $Utf8NoBom)
     Write-Host "   Landing page mise à jour → v$SemVer" -ForegroundColor Green
 } else {
     Write-Host "   Landing page déjà à jour" -ForegroundColor Yellow

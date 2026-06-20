@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
@@ -34,7 +34,7 @@
       overflow-x: hidden;
     }
 
-    /* â”€â”€ NAV â”€â”€ */
+    /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
@@ -71,7 +71,7 @@
       background: var(--accent); color: #fff;
     }
 
-    /* â”€â”€ HERO â”€â”€ */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -85,6 +85,11 @@
         radial-gradient(ellipse 60% 50% at 50% -10%, rgba(96,96,240,.25) 0%, transparent 70%),
         radial-gradient(ellipse 40% 40% at 80% 60%, rgba(160,96,255,.12) 0%, transparent 60%);
       pointer-events: none;
+      animation: heroGlow 14s ease-in-out infinite alternate;
+    }
+    @keyframes heroGlow {
+      0%   { transform: translate3d(0,0,0) scale(1);    opacity: .9; }
+      100% { transform: translate3d(0,-3%,0) scale(1.08); opacity: 1; }
     }
 
     .badge {
@@ -103,6 +108,7 @@
       background: linear-gradient(160deg, #fff 30%, #9090cc);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       margin-bottom: 20px;
+      filter: drop-shadow(0 6px 40px rgba(96,96,240,.35));
     }
     .hero-sub {
       font-size: clamp(1rem, 2.5vw, 1.25rem);
@@ -128,48 +134,74 @@
     }
     .btn-ghost:hover { border-color: rgba(100,100,220,.4); }
 
-    /* â”€â”€ OVERLAY PREVIEW â”€â”€ */
+    /* ── DESKTOP PREVIEW ── */
     .preview-wrap {
-      margin-top: 60px; position: relative;
+      margin-top: 64px; position: relative;
       display: flex; justify-content: center;
     }
     .screen-mock {
-      width: 360px; height: 200px;
-      background: linear-gradient(160deg, #1a1a3e, #0d0d20);
-      border: 1px solid var(--border); border-radius: 20px;
-      position: relative; overflow: hidden;
+      width: min(440px, 92vw); height: 268px;
+      border: 1px solid var(--border); border-radius: 16px;
+      position: relative; overflow: hidden; background: #0b0b1c;
+      box-shadow: 0 30px 80px -30px rgba(96,96,240,.55),
+                  inset 0 1px 0 rgba(255,255,255,.05);
     }
-    .screen-mock::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(96,96,200,.08), transparent);
+    .desktop {
+      position: absolute; inset: 0 0 38px 0;
+      background:
+        radial-gradient(120% 90% at 75% 12%, rgba(160,96,255,.30), transparent 55%),
+        radial-gradient(120% 90% at 15% 88%, rgba(96,96,240,.28), transparent 55%),
+        linear-gradient(160deg, #1c1c44, #0c0c22);
+    }
+    .desktop::after {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 28px 28px;
+      -webkit-mask-image: radial-gradient(70% 70% at 50% 40%, #000 25%, transparent 80%);
+              mask-image: radial-gradient(70% 70% at 50% 40%, #000 25%, transparent 80%);
     }
     .overlay-pill {
-      position: absolute; top: 24px; right: 24px;
-      background: rgba(26,26,46,.9);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(100,100,220,.2);
-      border-radius: 12px;
-      padding: 8px 14px;
+      position: absolute; top: 18px; right: 18px;
+      background: rgba(18,18,38,.78);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(140,140,240,.28);
+      border-radius: 12px; padding: 8px 14px;
       display: flex; align-items: center; gap: 8px;
-      font-size: .9rem; font-weight: 600;
-      box-shadow: 0 4px 20px rgba(0,0,0,.4);
+      font-size: .95rem; font-weight: 700;
+      box-shadow: 0 8px 24px rgba(0,0,0,.45);
+      animation: floatPill 5s ease-in-out infinite;
     }
-    .battery-icon { font-size: 1.1rem; }
-    .battery-pct { color: var(--green); }
+    @keyframes floatPill { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .battery-icon { font-size: 1.15rem; }
+    .battery-pct  { color: var(--green); transition: color .4s; min-width: 40px; text-align: right; }
 
-    .tray-mock {
-      position: absolute; bottom: 16px; right: 16px;
-      display: flex; align-items: center; gap: 8px;
+    .taskbar {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 38px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 12px;
+      background: rgba(10,10,22,.82);
+      backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(140,140,240,.14);
     }
+    .tb-icons { display: flex; gap: 10px; align-items: center; }
+    .tb-app   { width: 18px; height: 18px; border-radius: 5px; background: rgba(255,255,255,.10); }
+    .tb-app.start { background: linear-gradient(135deg, var(--accent), var(--accent2)); }
+    .tb-tray  { display: flex; align-items: center; gap: 12px; }
     .tray-item {
-      width: 32px; height: 32px; border-radius: 6px;
+      min-width: 30px; height: 24px; padding: 0 6px; border-radius: 6px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,.04);
-      font-size: .7rem; font-weight: 700; color: #fff;
+      background: rgba(96,96,240,.18); border: 1px solid rgba(140,140,240,.3);
+      font-size: .72rem; font-weight: 800; color: #fff;
+      box-shadow: 0 0 12px rgba(96,96,240,.35);
+    }
+    .tb-clock {
+      display: flex; flex-direction: column; line-height: 1.18;
+      font-size: .62rem; color: var(--muted); text-align: right;
     }
 
-    /* â”€â”€ SECTIONS â”€â”€ */
+    /* ── SECTIONS ── */
     section { padding: 100px 24px; }
 
     .section-inner { max-width: 1000px; margin: 0 auto; }
@@ -188,7 +220,7 @@
       margin-bottom: 56px;
     }
 
-    /* â”€â”€ FEATURES GRID â”€â”€ */
+    /* ── FEATURES GRID ── */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -199,7 +231,10 @@
       border-radius: var(--radius); padding: 28px;
       transition: border-color .2s, transform .2s;
     }
-    .feat-card:hover { border-color: rgba(96,96,240,.4); transform: translateY(-3px); }
+    .feat-card:hover {
+      border-color: rgba(96,96,240,.4); transform: translateY(-3px);
+      box-shadow: 0 16px 44px -16px rgba(96,96,240,.5);
+    }
     .feat-icon {
       width: 44px; height: 44px; border-radius: 10px;
       background: rgba(96,96,240,.15);
@@ -209,7 +244,7 @@
     .feat-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
     .feat-card p  { font-size: .88rem; color: var(--muted); line-height: 1.65; }
 
-    /* â”€â”€ HOW IT WORKS â”€â”€ */
+    /* ── HOW IT WORKS ── */
     .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
     .steps::before {
       content: '';
@@ -234,9 +269,13 @@
       padding: 2px 6px; border-radius: 4px; font-size: .82rem;
     }
 
-    /* â”€â”€ BATTERY INDICATOR DEMO â”€â”€ */
+    /* ── BATTERY INDICATOR DEMO ── */
     .battery-demo {
-      display: flex; gap: 16px; flex-wrap: wrap; margin-top: 32px;
+      display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px;
+    }
+    .legend-label {
+      margin-top: 36px; font-size: .78rem; font-weight: 600;
+      letter-spacing: .04em; color: var(--muted); text-transform: uppercase;
     }
     .batt-pill {
       display: flex; align-items: center; gap: 8px;
@@ -246,7 +285,7 @@
     }
     .dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    /* â”€â”€ INSTALL â”€â”€ */
+    /* ── INSTALL ── */
     .install-card {
       background: var(--card); border: 1px solid var(--border);
       border-radius: 20px; padding: 48px;
@@ -266,10 +305,10 @@
       display: flex; align-items: center; gap: 10px;
     }
     .req-list li::before {
-      content: 'âœ“'; color: var(--green); font-weight: 700; font-size: .8rem;
+      content: '✓'; color: var(--green); font-weight: 700; font-size: .8rem;
     }
 
-    /* â”€â”€ FOOTER â”€â”€ */
+    /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 48px;
@@ -279,7 +318,7 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
 
-    /* â”€â”€ ANIMATIONS â”€â”€ */
+    /* ── ANIMATIONS ── */
     .fade-up {
       opacity: 0; transform: translateY(24px);
       transition: opacity .6s ease, transform .6s ease;
@@ -293,7 +332,7 @@
 <nav>
   <div class="nav-logo">AUDIOBL</div>
   <div class="nav-links">
-    <a href="#features"   data-fr="FonctionnalitÃ©s"   data-en="Features">FonctionnalitÃ©s</a>
+    <a href="#features"   data-fr="Fonctionnalités"   data-en="Features">Fonctionnalités</a>
     <a href="#how"        data-fr="Fonctionnement"     data-en="How it works">Fonctionnement</a>
     <a href="#install"    data-fr="Installer"          data-en="Install">Installer</a>
     <a href="https://github.com/remisarrailh/AUDIOBL" target="_blank">GitHub</a>
@@ -306,13 +345,13 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge"><span class="badge-dot"></span> <span data-fr="Windows 11 Â· Casques Bluetooth" data-en="Windows 11 Â· Bluetooth Headphones">Windows 11 Â· Casques Bluetooth</span><span class="badge-sep">Â·</span><span>v1.2.0</span></div>
+  <div class="badge"><span class="badge-dot"></span> <span data-fr="Windows 11 · Casques Bluetooth" data-en="Windows 11 · Bluetooth Headphones">Windows 11 · Casques Bluetooth</span><span class="badge-sep">·</span><span>v1.3.0</span></div>
   <h1>AUDIOBL</h1>
-  <p class="hero-sub" data-fr="Le niveau de batterie de votre casque Bluetooth, toujours visible dans la barre des tÃ¢ches." data-en="Your Bluetooth headphone battery level, always visible in the system tray.">Le niveau de batterie de votre casque Bluetooth, toujours visible dans la barre des tÃ¢ches.</p>
+  <p class="hero-sub" data-fr="Le niveau de batterie de votre casque Bluetooth, toujours visible dans la barre des tâches." data-en="Your Bluetooth headphone battery level, always visible in the system tray.">Le niveau de batterie de votre casque Bluetooth, toujours visible dans la barre des tâches.</p>
   <div class="cta-group">
     <a href="https://github.com/remisarrailh/AUDIOBL/releases/latest" class="btn btn-primary">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2.75 14A1.75 1.75 0 0 1 1 12.25v-2.5a.75.75 0 0 1 1.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 1.5 0v2.5A1.75 1.75 0 0 1 13.25 14Zm-1-7.25v-4.5C1.75 1.784 2.784.75 4.25.75h7.5C13.216.75 14.25 1.784 14.25 2.25v4.5a.75.75 0 0 1-1.5 0v-4.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0-.75.75v4.5a.75.75 0 0 1-1.5 0Z"/><path d="M7.25 8.75v-5.5a.75.75 0 0 1 1.5 0v5.5l1.97-1.97a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 8.84a.75.75 0 0 1 1.06-1.06Z"/></svg>
-      <span data-fr="TÃ©lÃ©charger" data-en="Download">TÃ©lÃ©charger</span>
+      <span data-fr="Télécharger" data-en="Download">Télécharger</span>
     </a>
     <a href="https://github.com/remisarrailh/AUDIOBL" class="btn btn-ghost">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
@@ -320,15 +359,25 @@
     </a>
   </div>
 
-  <!-- Mock preview -->
+  <!-- Desktop preview -->
   <div class="preview-wrap fade-up">
     <div class="screen-mock">
-      <div class="overlay-pill">
-        <span class="battery-icon">ðŸ”‹</span>
-        <span class="battery-pct" id="demo-pct">87%</span>
+      <div class="desktop">
+        <div class="overlay-pill">
+          <span class="battery-icon">🔋</span>
+          <span class="battery-pct" id="demo-pct">87%</span>
+        </div>
       </div>
-      <div class="tray-mock">
-        <div class="tray-item" id="demo-tray">87%</div>
+      <div class="taskbar">
+        <div class="tb-icons">
+          <span class="tb-app start"></span>
+          <span class="tb-app"></span>
+          <span class="tb-app"></span>
+        </div>
+        <div class="tb-tray">
+          <div class="tray-item" id="demo-tray">87%</div>
+          <div class="tb-clock"><span>14:32</span><span>20/06/2026</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -337,30 +386,40 @@
 <!-- FEATURES -->
 <section id="features" style="background: var(--surface);">
   <div class="section-inner">
-    <p class="section-label fade-up" data-fr="FonctionnalitÃ©s" data-en="Features">FonctionnalitÃ©s</p>
+    <p class="section-label fade-up" data-fr="Fonctionnalités" data-en="Features">Fonctionnalités</p>
     <h2 class="fade-up" data-fr="Tout ce dont vous avez besoin" data-en="Everything you need">Tout ce dont vous avez besoin</h2>
-    <p class="section-sub fade-up" data-fr="LÃ©ger, discret, toujours Ã  jour." data-en="Lightweight, unobtrusive, always up to date.">LÃ©ger, discret, toujours Ã  jour.</p>
+    <p class="section-sub fade-up" data-fr="Léger, discret, toujours à jour." data-en="Lightweight, unobtrusive, always up to date.">Léger, discret, toujours à jour.</p>
 
     <div class="features-grid">
       <div class="feat-card fade-up">
-        <div class="feat-icon">ðŸ”‹</div>
-        <h3 data-fr="IcÃ´ne live dans le tray" data-en="Live tray icon">IcÃ´ne live dans le tray</h3>
-        <p data-fr="Le pourcentage s'affiche directement dans l'icÃ´ne de la barre des tÃ¢ches â€” mise Ã  jour toutes les 30 secondes." data-en="The battery percentage is rendered directly in the tray icon â€” updated every 30 seconds.">Le pourcentage s'affiche directement dans l'icÃ´ne de la barre des tÃ¢ches â€” mise Ã  jour toutes les 30 secondes.</p>
+        <div class="feat-icon">🔋</div>
+        <h3 data-fr="Icône live dans le tray" data-en="Live tray icon">Icône live dans le tray</h3>
+        <p data-fr="Le pourcentage s'affiche directement dans l'icône de la barre des tâches — mise à jour toutes les 30 secondes." data-en="The battery percentage is rendered directly in the tray icon — updated every 30 seconds.">Le pourcentage s'affiche directement dans l'icône de la barre des tâches — mise à jour toutes les 30 secondes.</p>
       </div>
       <div class="feat-card fade-up">
-        <div class="feat-icon">ðŸ’¬</div>
+        <div class="feat-icon">💬</div>
         <h3 data-fr="Overlay flottant" data-en="Floating overlay">Overlay flottant</h3>
-        <p data-fr="Une pastille transparente toujours visible, dÃ©plaÃ§able, avec indicateur colorÃ© (vert / jaune / rouge)." data-en="A transparent pill, always on top, draggable, with a color indicator (green / yellow / red).">Une pastille transparente toujours visible, dÃ©plaÃ§able, avec indicateur colorÃ© (vert / jaune / rouge).</p>
+        <p data-fr="Une pastille transparente toujours visible, déplaçable, avec indicateur coloré (vert / jaune / rouge)." data-en="A transparent pill, always on top, draggable, with a color indicator (green / yellow / red).">Une pastille transparente toujours visible, déplaçable, avec indicateur coloré (vert / jaune / rouge).</p>
       </div>
       <div class="feat-card fade-up">
-        <div class="feat-icon">âš¡</div>
-        <h3 data-fr="DÃ©marrage automatique" data-en="Auto-start">DÃ©marrage automatique</h3>
-        <p data-fr="Optionnel : se lance avec Windows, vit entiÃ¨rement dans le tray, aucune fenÃªtre dans la barre des tÃ¢ches." data-en="Optional: starts with Windows, lives entirely in the tray, no taskbar window.">Optionnel : se lance avec Windows, vit entiÃ¨rement dans le tray, aucune fenÃªtre dans la barre des tÃ¢ches.</p>
+        <div class="feat-icon">⚡</div>
+        <h3 data-fr="Démarrage automatique" data-en="Auto-start">Démarrage automatique</h3>
+        <p data-fr="Optionnel : se lance avec Windows, vit entièrement dans le tray, aucune fenêtre dans la barre des tâches." data-en="Optional: starts with Windows, lives entirely in the tray, no taskbar window.">Optionnel : se lance avec Windows, vit entièrement dans le tray, aucune fenêtre dans la barre des tâches.</p>
       </div>
       <div class="feat-card fade-up">
-        <div class="feat-icon">ðŸŽ§</div>
+        <div class="feat-icon">🎧</div>
         <h3 data-fr="Compatible tous casques" data-en="Any headphone">Compatible tous casques</h3>
-        <p data-fr="Fonctionne avec tout casque Bluetooth exposant le GATT Battery Service (norme Bluetooth SIG). Audio-Technica, Sony, Bose, Jabra, Sennheiserâ€¦" data-en="Works with any Bluetooth headphone exposing the GATT Battery Service (Bluetooth SIG standard). Audio-Technica, Sony, Bose, Jabra, Sennheiserâ€¦">Fonctionne avec tout casque Bluetooth exposant le GATT Battery Service. Audio-Technica, Sony, Bose, Jabra, Sennheiserâ€¦</p>
+        <p data-fr="Fonctionne avec tout casque Bluetooth exposant le GATT Battery Service (norme Bluetooth SIG). Audio-Technica, Sony, Bose, Jabra, Sennheiser…" data-en="Works with any Bluetooth headphone exposing the GATT Battery Service (Bluetooth SIG standard). Audio-Technica, Sony, Bose, Jabra, Sennheiser…">Fonctionne avec tout casque Bluetooth exposant le GATT Battery Service. Audio-Technica, Sony, Bose, Jabra, Sennheiser…</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon">🕒</div>
+        <h3 data-fr="Mémoire du dernier niveau" data-en="Last level remembered">Mémoire du dernier niveau</h3>
+        <p data-fr="Quand le casque se déconnecte, le dernier pourcentage reste affiché. Le chiffre change de couleur selon l'ancienneté de la mesure : blanc (moins d'1 h), jaune (plus d'1 h), rouge (plus de 6 h)." data-en="When the headset disconnects, the last percentage stays on screen. The number is tinted by how old the reading is: white (under 1h), yellow (over 1h), red (over 6h).">Quand le casque se déconnecte, le dernier pourcentage reste affiché. Le chiffre change de couleur selon l'ancienneté de la mesure : blanc (moins d'1 h), jaune (plus d'1 h), rouge (plus de 6 h).</p>
+      </div>
+      <div class="feat-card fade-up">
+        <div class="feat-icon">🔔</div>
+        <h3 data-fr="Alerte batterie faible" data-en="Low-battery alert">Alerte batterie faible</h3>
+        <p data-fr="À 35 % ou moins, un avertissement s'affiche au centre de l'écran principal — une seule fois, puis de nouveau uniquement après une recharge à 50 %." data-en="At 35% or below, a warning appears in the center of the main screen — once, then again only after recharging to 50%.">À 35 % ou moins, un avertissement s'affiche au centre de l'écran principal — une seule fois, puis de nouveau uniquement après une recharge à 50 %.</p>
       </div>
     </div>
 
@@ -371,15 +430,24 @@
       <div class="batt-pill"><span>Bose</span></div>
       <div class="batt-pill"><span>Jabra</span></div>
       <div class="batt-pill"><span>Sennheiser</span></div>
-      <div class="batt-pill"><span style="color:var(--muted)" data-fr="et plusâ€¦" data-en="and moreâ€¦">et plusâ€¦</span></div>
+      <div class="batt-pill"><span style="color:var(--muted)" data-fr="et plus…" data-en="and more…">et plus…</span></div>
     </div>
 
-    <!-- Battery color demo -->
-    <div class="battery-demo" style="margin-top:40px">
-      <div class="batt-pill"><span class="dot" style="background:var(--green)"></span> <span data-fr="â‰¥ 50 % â€” vert" data-en="â‰¥ 50% â€” green">â‰¥ 50 % â€” vert</span></div>
-      <div class="batt-pill"><span class="dot" style="background:var(--yellow)"></span> <span data-fr="â‰¥ 20 % â€” jaune" data-en="â‰¥ 20% â€” yellow">â‰¥ 20 % â€” jaune</span></div>
-      <div class="batt-pill"><span class="dot" style="background:var(--red)"></span> <span data-fr="&lt; 20 % â€” rouge" data-en="&lt; 20% â€” red">&lt; 20 % â€” rouge</span></div>
-      <div class="batt-pill"><span class="dot" style="background:var(--muted)"></span> <span data-fr="DÃ©connectÃ© â€” ---" data-en="Disconnected â€” ---">DÃ©connectÃ© â€” ---</span></div>
+    <!-- Battery color demo (icon = charge level) -->
+    <p class="legend-label" data-fr="Couleur de l'icône — niveau de charge" data-en="Icon colour — charge level">Couleur de l'icône — niveau de charge</p>
+    <div class="battery-demo">
+      <div class="batt-pill"><span class="dot" style="background:var(--green)"></span> <span data-fr="≥ 50 % — vert" data-en="≥ 50% — green">≥ 50 % — vert</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--yellow)"></span> <span data-fr="≥ 20 % — jaune" data-en="≥ 20% — yellow">≥ 20 % — jaune</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--red)"></span> <span data-fr="&lt; 20 % — rouge" data-en="&lt; 20% — red">&lt; 20 % — rouge</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--muted)"></span> <span data-fr="Déconnecté — ---" data-en="Disconnected — ---">Déconnecté — ---</span></div>
+    </div>
+
+    <!-- Freshness color demo (number = reading age) -->
+    <p class="legend-label" data-fr="Couleur du chiffre — ancienneté de la mesure" data-en="Number colour — reading age">Couleur du chiffre — ancienneté de la mesure</p>
+    <div class="battery-demo">
+      <div class="batt-pill"><span class="dot" style="background:#ffffff"></span> <span data-fr="Frais — moins d'1 h" data-en="Fresh — under 1h">Frais — moins d'1 h</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--yellow)"></span> <span data-fr="Plus d'1 h — jaune" data-en="Over 1h — yellow">Plus d'1 h — jaune</span></div>
+      <div class="batt-pill"><span class="dot" style="background:var(--red)"></span> <span data-fr="Plus de 6 h — rouge" data-en="Over 6h — red">Plus de 6 h — rouge</span></div>
     </div>
   </div>
 </section>
@@ -395,22 +463,22 @@
       <div class="step">
         <div class="step-num">1</div>
         <div class="step-body">
-          <h3 data-fr="DÃ©tection de connexion" data-en="Connection detection">DÃ©tection de connexion</h3>
-          <p data-fr="L'app surveille les Ã©vÃ©nements Bluetooth via l'API Device Information de Windows (DeviceInformation.CreateWatcher). La connexion et dÃ©connexion sont dÃ©tectÃ©es en temps rÃ©el." data-en="The app watches Bluetooth events via Windows Device Information API (DeviceInformation.CreateWatcher). Connection and disconnection are detected in real time.">L'app surveille les Ã©vÃ©nements Bluetooth via l'API Device Information de Windows. La connexion et dÃ©connexion sont dÃ©tectÃ©es en temps rÃ©el.</p>
+          <h3 data-fr="Détection de connexion" data-en="Connection detection">Détection de connexion</h3>
+          <p data-fr="L'app surveille les événements Bluetooth via l'API Device Information de Windows (DeviceInformation.CreateWatcher). La connexion et déconnexion sont détectées en temps réel." data-en="The app watches Bluetooth events via Windows Device Information API (DeviceInformation.CreateWatcher). Connection and disconnection are detected in real time.">L'app surveille les événements Bluetooth via l'API Device Information de Windows. La connexion et déconnexion sont détectées en temps réel.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">2</div>
         <div class="step-body">
           <h3 data-fr="Scan BLE &amp; lecture GATT" data-en="BLE scan &amp; GATT read">Scan BLE &amp; lecture GATT</h3>
-          <p data-fr="La batterie est lue via le GATT Battery Service standard (UUID 0x180F / 0x2A19). Un scan BLE passif dÃ©tecte automatiquement l'adresse du casque â€” aucun GUID Ã  configurer manuellement." data-en="Battery is read via the standard GATT Battery Service (UUID 0x180F / 0x2A19). A passive BLE scan automatically discovers the headphone address â€” no GUID to configure manually.">La batterie est lue via le GATT Battery Service standard (<code>0x180F</code> / <code>0x2A19</code>). Un scan BLE passif dÃ©tecte automatiquement l'adresse du casque.</p>
+          <p data-fr="La batterie est lue via le GATT Battery Service standard (UUID 0x180F / 0x2A19). Un scan BLE passif détecte automatiquement l'adresse du casque — aucun GUID à configurer manuellement." data-en="Battery is read via the standard GATT Battery Service (UUID 0x180F / 0x2A19). A passive BLE scan automatically discovers the headphone address — no GUID to configure manually.">La batterie est lue via le GATT Battery Service standard (<code>0x180F</code> / <code>0x2A19</code>). Un scan BLE passif détecte automatiquement l'adresse du casque.</p>
         </div>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <div class="step-body">
-          <h3 data-fr="Rendu de l'icÃ´ne" data-en="Icon rendering">Rendu de l'icÃ´ne</h3>
-          <p data-fr="L'icÃ´ne tray est gÃ©nÃ©rÃ©e Ã  chaque mise Ã  jour via GDI â€” le texte &quot;87%&quot; est dessinÃ© sur un bitmap 32Ã—32 transparent et converti en HICON natif." data-en="The tray icon is generated on each update via GDI â€” the text &quot;87%&quot; is drawn on a transparent 32Ã—32 bitmap and converted to a native HICON.">L'icÃ´ne tray est gÃ©nÃ©rÃ©e via GDI â€” le texte est dessinÃ© sur un bitmap 32Ã—32 transparent et converti en HICON natif.</p>
+          <h3 data-fr="Rendu de l'icône" data-en="Icon rendering">Rendu de l'icône</h3>
+          <p data-fr="L'icône tray est générée à chaque mise à jour via GDI — le texte &quot;87%&quot; est dessiné sur un bitmap 32×32 transparent et converti en HICON natif." data-en="The tray icon is generated on each update via GDI — the text &quot;87%&quot; is drawn on a transparent 32×32 bitmap and converted to a native HICON.">L'icône tray est générée via GDI — le texte est dessiné sur un bitmap 32×32 transparent et converti en HICON natif.</p>
         </div>
       </div>
     </div>
@@ -421,22 +489,22 @@
 <section id="install" style="background: var(--surface);">
   <div class="section-inner">
     <p class="section-label fade-up" data-fr="Installation" data-en="Installation">Installation</p>
-    <h2 class="fade-up" data-fr="PrÃªt en 30 secondes" data-en="Ready in 30 seconds">PrÃªt en 30 secondes</h2>
+    <h2 class="fade-up" data-fr="Prêt en 30 secondes" data-en="Ready in 30 seconds">Prêt en 30 secondes</h2>
 
     <div class="install-card fade-up">
       <div>
-        <h3 data-fr="TÃ©lÃ©charger &amp; installer" data-en="Download &amp; install">TÃ©lÃ©charger &amp; installer</h3>
-        <p data-fr="TÃ©lÃ©chargez le fichier MSIX depuis la page Releases, double-cliquez pour installer, puis lancez AUDIOBL depuis le menu DÃ©marrer." data-en="Download the MSIX file from the Releases page, double-click to install, then launch AUDIOBL from the Start menu.">TÃ©lÃ©chargez le fichier MSIX depuis la page Releases, double-cliquez pour installer, puis lancez AUDIOBL depuis le menu DÃ©marrer.</p>
+        <h3 data-fr="Télécharger &amp; installer" data-en="Download &amp; install">Télécharger &amp; installer</h3>
+        <p data-fr="Téléchargez le fichier MSIX depuis la page Releases, double-cliquez pour installer, puis lancez AUDIOBL depuis le menu Démarrer." data-en="Download the MSIX file from the Releases page, double-click to install, then launch AUDIOBL from the Start menu.">Téléchargez le fichier MSIX depuis la page Releases, double-cliquez pour installer, puis lancez AUDIOBL depuis le menu Démarrer.</p>
         <a href="https://github.com/remisarrailh/AUDIOBL/releases/latest" class="btn btn-primary" style="display:inline-flex">
-          <span data-fr="TÃ©lÃ©charger AUDIOBL" data-en="Download AUDIOBL">TÃ©lÃ©charger AUDIOBL</span>
+          <span data-fr="Télécharger AUDIOBL" data-en="Download AUDIOBL">Télécharger AUDIOBL</span>
         </a>
       </div>
       <div>
-        <h3 data-fr="PrÃ©requis" data-en="Requirements">PrÃ©requis</h3>
+        <h3 data-fr="Prérequis" data-en="Requirements">Prérequis</h3>
         <ul class="req-list">
           <li>Windows 11 (22H2+)</li>
-          <li data-fr="Casque Bluetooth appairÃ© (GATT Battery Service)" data-en="Bluetooth headphone paired (GATT Battery Service)">Casque Bluetooth appairÃ© (GATT Battery Service)</li>
-          <li data-fr="Bluetooth activÃ©" data-en="Bluetooth enabled">Bluetooth activÃ©</li>
+          <li data-fr="Casque Bluetooth appairé (GATT Battery Service)" data-en="Bluetooth headphone paired (GATT Battery Service)">Casque Bluetooth appairé (GATT Battery Service)</li>
+          <li data-fr="Bluetooth activé" data-en="Bluetooth enabled">Bluetooth activé</li>
         </ul>
       </div>
     </div>
@@ -445,7 +513,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <span data-fr="Fait avec â™¥ pour l'ATH-M50xBT" data-en="Made with â™¥ for the ATH-M50xBT">Fait avec â™¥ pour l'ATH-M50xBT</span>
+  <span data-fr="Fait avec ♥ pour l'ATH-M50xBT" data-en="Made with ♥ for the ATH-M50xBT">Fait avec ♥ pour l'ATH-M50xBT</span>
   <div style="display:flex;gap:24px">
     <a href="https://github.com/remisarrailh/AUDIOBL">GitHub</a>
     <a href="https://github.com/remisarrailh/AUDIOBL/blob/main/LICENSE">MIT</a>
@@ -453,7 +521,7 @@
 </footer>
 
 <script>
-  // â”€â”€ Language toggle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Language toggle ──────────────────────────────────────────────────────
   let currentLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
 
   function setLang(lang) {
@@ -469,7 +537,7 @@
   // Apply on load
   setLang(currentLang);
 
-  // â”€â”€ Battery demo animation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Battery demo animation ───────────────────────────────────────────────
   const levels = [
     { pct: '87%', color: '#4ade80' },
     { pct: '43%', color: '#facc15' },
@@ -485,7 +553,7 @@
     if (tray) { tray.textContent = levels[idx].pct; }
   }, 2000);
 
-  // â”€â”€ Scroll fade-in â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Scroll fade-in ───────────────────────────────────────────────────────
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });

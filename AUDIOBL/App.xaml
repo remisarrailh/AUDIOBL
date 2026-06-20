@@ -11,6 +11,7 @@
             <tb:TaskbarIcon.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Afficher / Masquer" Click="MenuToggleOverlay_Click"/>
+                    <MenuItem Header="Recentrer l'overlay" Click="MenuRecenterOverlay_Click"/>
                     <Separator/>
                     <MenuItem Header="Paramètres" Click="MenuSettings_Click"/>
                     <Separator/>
